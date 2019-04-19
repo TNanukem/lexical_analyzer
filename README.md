@@ -32,3 +32,9 @@ cc lex.yy.c -ll -o out
 ~~~~
 
 Then, you can either assign a file to the output or insert it manually on the command line.
+
+## To-do
+
+* Treat the {} construction as commentary
+* Search on the reserved identificators list
+* Error handling
