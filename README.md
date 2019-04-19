@@ -18,3 +18,17 @@ The objective of this project is to develop a Lexical Analyzer capable of identi
 The original description and requisites of this project is available, in portuguese at (info/Assignment1.pdf).
 
 This was proposed so we can apply the initial concepts we've been theoretically developing in our classes with the concepts of Compilers, Finite Automatas and Grammars.
+
+## Running the analyzer
+
+In order to run the analyzer, you have to compile the files. There is a Makefile available, so everything you have to do is to run make and then execute the out file.
+
+However, if you want to manually compile the files, you should use the following sequence of instructions:
+
+~~~~
+lex analyzer.l
+cc lex.yy.c -ll -o out
+./out
+~~~~
+
+Then, you can either assign a file to the output or insert it manually on the command line.
