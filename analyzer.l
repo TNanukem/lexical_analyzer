@@ -28,10 +28,13 @@ menor_igual_simb "<="
 ponto_virgula_simb ";"
 virgula_simb ","
 ponto_simb "."
+dois_pontos_simb ":"
 abre_par_simb "("
 fecha_par_simb ")"
 abre_chave_simb "{"
 fecha_chave_simb "}"
+
+espaco " "
 
 ident {letra}({letra}|{digito})*
 numero_int -?{digito}+
@@ -62,9 +65,12 @@ comentario {abre_chave_simb}(.*?){fecha_chave_simb}
 {virgula_simb} {printf("%s - virgula_simb\n", yytext);}
 {ponto_simb} {printf("%s - ponto_simb\n", yytext);}
 {ponto_virgula_simb} {printf("%s - ponto_virgula_simb\n", yytext);}
+{dois_pontos_simb} {printf("%s - dois_pontos_simb\n", yytext);}
 
-{comentario} {}
+{comentario} ;
+{espaco} ;
 
+. {printf("%s - erro: simbolo nao pertence a linguagem\n", yytext);}
 %%
 int main(){
     yylex();
