@@ -13,8 +13,8 @@
 
 %}
 
-digit [0-9]
-letter [a-zA-Z]
+digito [0-9]
+letra [a-zA-Z]
 mais_simb "+"
 menos_simb "-"
 mult_simb "*"
@@ -30,10 +30,13 @@ virgula_simb ","
 ponto_simb "."
 abre_par_simb "("
 fecha_par_simb ")"
+abre_chave_simb "{"
+fecha_chave_simb "}"
 
-ident {letter}({letter}|{digit})*
-numero_int -?{digit}+
-numero_real -?{digit}+"."{digit}+
+ident {letra}({letra}|{digito})*
+numero_int -?{digito}+
+numero_real -?{digito}+"."{digito}+
+comentario {abre_chave_simb}(.*?){fecha_chave_simb}
 
 %%
 
@@ -59,6 +62,8 @@ numero_real -?{digit}+"."{digit}+
 {virgula_simb} {printf("%s - virgula_simb\n", yytext);}
 {ponto_simb} {printf("%s - ponto_simb\n", yytext);}
 {ponto_virgula_simb} {printf("%s - ponto_virgula_simb\n", yytext);}
+
+{comentario} {}
 
 %%
 int main(){

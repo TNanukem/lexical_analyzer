@@ -35,6 +35,6 @@ Then, you can either assign a file to the output or insert it manually on the co
 
 ## To-do
 
-* Treat the {} construction as commentary
+*~Treat the {} construction as commentary~
 * Search on the reserved identificators list
 * Error handling
