@@ -11,6 +11,8 @@
         return 0;
     }
 
+    int n_linhas = 0;
+
 %}
 
 digito [0-9]
@@ -35,6 +37,8 @@ abre_chave_simb "{"
 fecha_chave_simb "}"
 
 espaco " "
+quebra_linha "\n"
+tab "\t"
 
 ident {letra}({letra}|{digito})*
 numero_int -?{digito}+
@@ -69,6 +73,8 @@ comentario {abre_chave_simb}(.*?){fecha_chave_simb}
 
 {comentario} ;
 {espaco} ;
+{tab} ;
+{quebra_linha} {n_linhas++;}
 
 . {printf("%s - erro: simbolo nao pertence a linguagem\n", yytext);}
 %%
