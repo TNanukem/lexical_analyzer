@@ -40,10 +40,12 @@ espaco " "
 quebra_linha "\n"
 tab "\t"
 
+comentario_mal_formado "{"[^}\n]*"\n"
+comentario "{"[^}\n]*"}"
+
 ident {letra}({letra}|{digito})*
 numero_int -?{digito}+
 numero_real -?{digito}+"."{digito}+
-comentario {abre_chave_simb}(.*?){fecha_chave_simb}
 
 %%
 
@@ -77,6 +79,7 @@ comentario {abre_chave_simb}(.*?){fecha_chave_simb}
 {quebra_linha} {n_linhas++;}
 
 . {printf("%s - erro: simbolo nao pertence a linguagem\n", yytext);}
+{comentario_mal_formado} {printf("erro: comentario mal formado\n");}
 %%
 int main(){
     yylex();
