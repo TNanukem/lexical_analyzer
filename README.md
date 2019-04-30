@@ -38,3 +38,8 @@ Then, you can either assign a file to the output or insert it manually on the co
 * ~Treat the {} construction as commentary~
 * Search on the reserved identificators list
 * Error handling
+  * ~Wrong comment~
+  * ~Symbol not on the language~
+  * Number not properly formed
+  * Size of the identificator
+  * Bad formatted strings
