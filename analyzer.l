@@ -1,13 +1,22 @@
 %{
 #include <stdio.h>
+#include <string.h>
 
     const char *reserved[] = {"program", "begin", "end", "const", "var", "real", "integer",
                       "procedure", "if", "else", "for", "while", "read", "write",
-                      "do", "then"};
+                      "do", "then", NULL};
 
     int isReserved(char* ident){
         // Recebe o ident e faz uma busca pra ver se é palavra
         // reservada da linguagem ou não.
+        int idx = 0;
+        while(reserved[idx] != NULL) {
+            if(strcmp(reserved[idx], ident) == 0) {
+              return idx;
+            }
+            idx++;
+        }
+
         return 0;
     }
 
