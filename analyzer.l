@@ -48,7 +48,6 @@ comentario_mal_formado "{"[^}\n]*"\n"
 comentario "{"[^}\n]*"}"
 
 ident ({letra}|"_"+)({letra}|{digito})*
-ident_mal_formado {digito}(({letra}|{digito})*)
 
 numero_int -?{digito}+
 numero_real -?{digito}+"."{digito}+
@@ -97,5 +96,7 @@ int main(){
     }
 
     yylex();
+
+    RTClean(&rt);
     return 0;
 }

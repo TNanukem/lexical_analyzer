@@ -23,5 +23,6 @@ String str(const char *s, int size);
 int RTSearch(RadixTree *rt, String str);
 int RTAddString(RadixTree *rt, String str);
 void RTInit(RadixTree *rt);
+void RTClean(RadixTree *rt);
 
 #endif
