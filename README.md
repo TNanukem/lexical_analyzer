@@ -36,10 +36,14 @@ Then, you can either assign a file to the output or insert it manually on the co
 ## To-do
 
 * ~Treat the {} construction as commentary~
-* ~Search on the reserved identificators list~ (Utilize a data structure to help the search)
+* ~Search on the reserved identificators list~
+* Calling structure of the specification
 * Error handling
-  * ~Wrong comment~
+  * ~Comment not closed~
   * ~Symbol not on the language~
   * Number not properly formed
   * Size of the identificator
+  * Bad formatted identificator
   * Bad formatted strings
+* Test generation and execution
+* Report
