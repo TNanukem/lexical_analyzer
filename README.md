@@ -36,7 +36,7 @@ Then, you can either assign a file to the output or insert it manually on the co
 ## To-do
 
 * ~Treat the {} construction as commentary~
-* Search on the reserved identificators list
+* ~Search on the reserved identificators list~ (Utilize a data structure to help the search)
 * Error handling
   * ~Wrong comment~
   * ~Symbol not on the language~

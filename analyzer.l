@@ -1,23 +1,18 @@
 %{
 #include <stdio.h>
 #include <string.h>
+#include "src/radix_tree.h"
 
     const char *reserved[] = {"program", "begin", "end", "const", "var", "real", "integer",
                       "procedure", "if", "else", "for", "while", "read", "write",
                       "do", "then", NULL};
 
-    int isReserved(char* ident){
+    RadixTree rt;
+
+    int isReserved(char* ident, int size){
         // Recebe o ident e faz uma busca pra ver se é palavra
         // reservada da linguagem ou não.
-        int idx = 0;
-        while(reserved[idx] != NULL) {
-            if(strcmp(reserved[idx], ident) == 0) {
-              return idx;
-            }
-            idx++;
-        }
-
-        return 0;
+        return RTSearch(&rt, str(ident, size));
     }
 
     int n_linhas = 0;
@@ -52,13 +47,14 @@ tab "\t"
 comentario_mal_formado "{"[^}\n]*"\n"
 comentario "{"[^}\n]*"}"
 
-ident {letra}({letra}|{digito})*
+ident ({letra}|"_"+)({letra}|{digito})*
+
 numero_int -?{digito}+
 numero_real -?{digito}+"."{digito}+
 
 %%
 
-{ident} {if(!isReserved(yytext)) printf("%s - ident\n", yytext); else printf("%s - %s\n", yytext, yytext);}
+{ident} {if(!isReserved(yytext, yyleng)) printf("%s - ident\n", yytext); else printf("%s - %s\n", yytext, yytext);}
 {numero_int} {printf("%s - numero_int\n", yytext);}
 {numero_real} {printf("%s - numero_real\n", yytext);}
 
@@ -91,6 +87,16 @@ numero_real -?{digito}+"."{digito}+
 {comentario_mal_formado} {printf("erro: comentario mal formado\n");}
 %%
 int main(){
+    RTInit(&rt);
+
+    int i = 0;
+    while(reserved[i] != NULL) {
+        RTAddString(&rt, strsize(reserved[i]));
+        i++;
+    }
+
     yylex();
+
+    RTClean(&rt);
     return 0;
 }
