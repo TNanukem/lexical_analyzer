@@ -43,7 +43,7 @@ Then, you can either assign a file to the output or insert it manually on the co
   * ~Symbol not on the language~
   * ~Number not properly formed~
   * Size of the identificator
-  * Bad formatted identificator
+  * ~Bad formatted identificator~
   * Bad formatted strings
 * Test generation and execution
 * Report

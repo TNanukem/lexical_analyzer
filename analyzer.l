@@ -41,13 +41,14 @@ abre_chave_simb "{"
 fecha_chave_simb "}"
 
 espaco " "
-quebra_linha "\n"
+quebra_linha "\r"?"\n"
 tab "\t"
 
 comentario_mal_formado "{"[^}\n]*"\n"
 comentario "{"[^}\n]*"}"
 
-ident ({letra}|"_"+)({letra}|{digito})*
+ident ({letra}|"_")+({letra}|{digito})*
+identificador_mal_formado {digito}+({letra}|"-"|"_")+
 
 numero_int -?{digito}+
 numero_real -?{digito}+"."{digito}+
@@ -90,6 +91,7 @@ numero_real_mal_formado_2 -?{digito}+"."[^digito]
 {comentario_mal_formado} {printf("erro: comentario mal formado\n");}
 {numero_real_mal_formado_1} {printf("erro: Numero real mal formado\n");}
 {numero_real_mal_formado_2} {printf("erro: Numero real mal formado\n");}
+{identificador_mal_formado} {printf("erro: Identificador mal formado\n");}
 
 %%
 int main(){
