@@ -55,7 +55,7 @@ numero_real -?{digito}+"."{digito}+
 
 numero_real_mal_formado_1 -?"."{digito}+
 numero_real_mal_formado_2 -?{digito}+"."[^digito]
-
+numero_real_mal_formado_3 -?{digito}+"."{digito}+"."
 %%
 
 {ident} {if(!isReserved(yytext, yyleng)) printf("%s - ident\n", yytext); else printf("%s - %s\n", yytext, yytext);}
@@ -91,6 +91,7 @@ numero_real_mal_formado_2 -?{digito}+"."[^digito]
 {comentario_mal_formado} {printf("erro: comentario mal formado\n");}
 {numero_real_mal_formado_1} {printf("erro: Numero real mal formado\n");}
 {numero_real_mal_formado_2} {printf("erro: Numero real mal formado\n");}
+{numero_real_mal_formado_3} {printf("erro: Numero real mal formado\n");}
 {identificador_mal_formado} {printf("erro: Identificador mal formado\n");}
 
 %%
