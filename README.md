@@ -41,7 +41,7 @@ Then, you can either assign a file to the output or insert it manually on the co
 * Error handling
   * ~Comment not closed~
   * ~Symbol not on the language~
-  * Number not properly formed
+  * ~Number not properly formed~
   * Size of the identificator
   * Bad formatted identificator
   * Bad formatted strings
