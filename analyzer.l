@@ -53,14 +53,14 @@ identificador_mal_formado {digito}+({letra}|"-"|"_")+
 numero_int ("+"|"-")?{digito}+
 numero_real ("+"|"-")?{digito}+"."{digito}+
 
-numero_real_mal_formado_1 -?"."{digito}+
-numero_real_mal_formado_2 -?{digito}+"."[^digito]
-numero_real_mal_formado_3 -?{digito}+"."{digito}+"."
+numero_real_mal_formado_1 ("+"|"-")?"."{digito}+
+numero_real_mal_formado_2 ("+"|"-")?{digito}+"."[^digito]
+numero_real_mal_formado_3 ("+"|"-")?{digito}+"."{digito}+"."
 %%
 
-{ident} {if(!isReserved(yytext, yyleng)) printf("%s - ident\n", yytext); else printf("%s - %s\n", yytext, yytext);}
-{numero_int} {printf("%s - numero_int\n", yytext);}
-{numero_real} {printf("%s - numero_real\n", yytext);}
+{ident} {if(yyleng > 100) printf("erro: Limite de identificador excedido\n"); else if(!isReserved(yytext, yyleng)) printf("%s - ident\n", yytext); else printf("%s - %s\n", yytext, yytext);}
+{numero_int} {if(yyleng < 12) printf("%s - numero_int\n", yytext); else printf("erro: Limite de caracteres excedido para numero inteiro\n");}
+{numero_real} {if(yyleng < 309) printf("%s - numero_real\n", yytext); else printf("erro: Limite de caracteres excedido para numero real\n");}
 
 {mais_simb} {printf("%s - mais_simb\n", yytext);}
 {menos_simb} {printf("%s - menos_simb\n", yytext);}
