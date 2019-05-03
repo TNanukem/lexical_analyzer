@@ -50,8 +50,8 @@ comentario "{"[^}\n]*"}"
 ident ({letra}|"_")+({letra}|{digito})*
 identificador_mal_formado {digito}+({letra}|"-"|"_")+
 
-numero_int -?{digito}+
-numero_real -?{digito}+"."{digito}+
+numero_int ("+"|"-")?{digito}+
+numero_real ("+"|"-")?{digito}+"."{digito}+
 
 numero_real_mal_formado_1 -?"."{digito}+
 numero_real_mal_formado_2 -?{digito}+"."[^digito]
