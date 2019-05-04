@@ -1,0 +1,22 @@
+program teste_correto;
+{Teste com erro de identificador com tamanho excessivo e número grande demais.}
+var a, a1, b, c2, 3ags2: integer;
+var ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg: integer;
+begin
+	read(a);
+	b = 100000000000000000000;
+	a1:= a1 * 2;
+	while (a1>=0) do
+	begin
+		write(a1);
+		read(c2);
+		a1:= a1 - 1;
+	end;
+	for b:=4 to 1000 do
+	begin
+		b:=b + 2;
+		a:=a - 1;
+	end;
+	if a <> b then write(a);
+	if b >= c2 then write(b) else then write(c2);
+end.
