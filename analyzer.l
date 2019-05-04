@@ -5,7 +5,7 @@
 
     const char *reserved[] = {"program", "begin", "end", "const", "var", "real", "integer",
                       "procedure", "if", "else", "for", "while", "read", "write",
-                      "do", "then", NULL};
+                      "do", "then", "to", NULL};
 
     RadixTree rt;
 
