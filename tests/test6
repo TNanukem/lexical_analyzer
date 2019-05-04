@@ -1,0 +1,24 @@
+program teste_correto;
+{Teste completo com vários erros
+{Programa - Analisador Léxico}
+var a, a1, b, c2, 3ags2: integer;
+begin
+	read(a);
+	a1:= a1 * 2;
+	b = 2.5a34;
+	while (a1>=0) do
+	begin
+		write(a1);
+		read(c2);
+		a1:= a1 - 1;
+	end;
+	for b:=4 to 1000 do
+	begin
+		b:=b + 2;
+		a:=a - 1;
+		c2 = 10000000000000;
+	end;
+	var f@d, t}eg2: integer;
+	if a <> b then write(a);
+	if b >= c2 then write(b) else then write(c2);
+end.
