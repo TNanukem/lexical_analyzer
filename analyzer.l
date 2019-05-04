@@ -15,7 +15,7 @@
         return RTSearch(&rt, str(ident, size));
     }
 
-    int n_linhas = 0;
+    int n_linhas = 1;
 
 %}
 
@@ -58,9 +58,9 @@ numero_real_mal_formado_2 ("+"|"-")?{digito}+"."[^digito]
 numero_real_mal_formado_3 ("+"|"-")?{digito}+"."{digito}+"."
 %%
 
-{ident} {if(yyleng > 100) printf("erro: Limite de identificador excedido\n"); else if(!isReserved(yytext, yyleng)) printf("%s - ident\n", yytext); else printf("%s - %s\n", yytext, yytext);}
-{numero_int} {if(yyleng < 12) printf("%s - numero_int\n", yytext); else printf("erro: Limite de caracteres excedido para numero inteiro\n");}
-{numero_real} {if(yyleng < 309) printf("%s - numero_real\n", yytext); else printf("erro: Limite de caracteres excedido para numero real\n");}
+{ident} {if(yyleng > 100) printf("%s - erro: Limite de identificador excedido, linha %d\n", yytext, n_linhas); else if(!isReserved(yytext, yyleng)) printf("%s - ident\n", yytext); else printf("%s - %s\n", yytext, yytext);}
+{numero_int} {if(yyleng < 12) printf("%s - numero_int\n", yytext); else printf("%s - erro: Limite de caracteres excedido para numero inteiro, linha %d\n", yytext, n_linhas);}
+{numero_real} {if(yyleng < 309) printf("%s - numero_real\n", yytext); else printf("%s - erro: Limite de caracteres excedido para numero real, linha %d\n", yytext, n_linhas);}
 
 {mais_simb} {printf("%s - mais_simb\n", yytext);}
 {menos_simb} {printf("%s - menos_simb\n", yytext);}
@@ -87,12 +87,12 @@ numero_real_mal_formado_3 ("+"|"-")?{digito}+"."{digito}+"."
 {tab} ;
 {quebra_linha} {n_linhas++;}
 
-. {printf("%s - erro: simbolo nao pertence a linguagem\n", yytext);}
-{comentario_mal_formado} {printf("erro: comentario mal formado\n");}
-{numero_real_mal_formado_1} {printf("erro: Numero real mal formado\n");}
-{numero_real_mal_formado_2} {printf("erro: Numero real mal formado\n");}
-{numero_real_mal_formado_3} {printf("erro: Numero real mal formado\n");}
-{identificador_mal_formado} {printf("erro: Identificador mal formado\n");}
+. {printf("%s - erro: simbolo nao pertence a linguagem, linha %d\n", yytext, n_linhas);}
+{comentario_mal_formado} {printf("erro: comentario mal formado, linha %d\n", n_linhas);}
+{numero_real_mal_formado_1} {printf("%s - erro: Numero real mal formado, linha %d\n", yytext, n_linhas);}
+{numero_real_mal_formado_2} {printf("%s - erro: Numero real mal formado, linha %d\n", yytext, n_linhas);}
+{numero_real_mal_formado_3} {printf("%s - erro: Numero real mal formado, linha %d\n", yytext, n_linhas);}
+{identificador_mal_formado} {printf("%s - erro: Identificador mal formado, linha %d\n", yytext, n_linhas);}
 
 %%
 int main(){
