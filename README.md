@@ -27,7 +27,7 @@ However, if you want to manually compile the files, you should use the following
 
 ~~~~
 lex analyzer.l
-cc lex.yy.c -ll -o out
+cc lex.yy.c src/radix_tree.c -ll -o out
 ./out
 ~~~~
 
@@ -45,4 +45,4 @@ Then, you can either assign a file to the output or insert it manually on the co
   * ~Size of the identificator~
   * ~Bad formatted identificator~
 * ~Test generation and execution~
-* Report
+* ~Report~
