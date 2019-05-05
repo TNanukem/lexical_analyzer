@@ -6,10 +6,10 @@
 
     const char *reserved[] = {"program", "begin", "end", "const", "var", "real", "integer",
 							  "procedure", "if", "else", "for", "while", "read", "write",
-							  "do", "then", "to", NULL};							 
+							  "do", "then", "to", NULL};
 
     RadixTree rt;
-    
+
     Entry* currentEntry;
 
     int isReserved(char* ident, int size){
@@ -50,15 +50,14 @@ tab "\t"
 comentario_mal_formado "{"[^"}"("\r"?"\n")]*"\r"?"\n"
 comentario "{"[^"}"("\r"?"\n")]*"}"
 
-ident ({letra}|"_")+({letra}|{digito})*
+ident ({letra}|"_")+({letra}|{digito}|"_")*
 identificador_mal_formado {digito}+({letra}|"-"|"_")+
 
 numero_int ("+"|"-")?{digito}+
 numero_real ("+"|"-")?{digito}+"."{digito}+
 
 numero_real_mal_formado_1 ("+"|"-")?"."{digito}+
-numero_real_mal_formado_2 ("+"|"-")?{digito}+"."[^digito]
-numero_real_mal_formado_3 ("+"|"-")?{digito}+"."{digito}+"."
+numero_real_mal_formado_2 ("+"|"-")?{digito}+"."({digito}|{ident}|".")*
 %%
 
 {ident} { 	if(yyleng > 100){
@@ -72,7 +71,7 @@ numero_real_mal_formado_3 ("+"|"-")?{digito}+"."{digito}+"."
 				return 0;
 			}
 		}
-		
+
 {numero_int} {	if(yyleng < 12){
 					currentEntry = initEntry(yytext, yyleng, n_linhas, numero_int, -1);
 					return 0;
@@ -81,7 +80,7 @@ numero_real_mal_formado_3 ("+"|"-")?{digito}+"."{digito}+"."
 					return -1;
 				}
 			 }
-			 
+
 {numero_real} {	if(yyleng < 309){
 					currentEntry = initEntry(yytext, yyleng, n_linhas, numero_real, -1);
 					return 0;
@@ -123,7 +122,6 @@ numero_real_mal_formado_3 ("+"|"-")?{digito}+"."{digito}+"."
 {comentario_mal_formado} {currentEntry = initEntry(yytext, yyleng, n_linhas, error_simb, 4);n_linhas++;return -1;}
 {numero_real_mal_formado_1} {currentEntry = initEntry(yytext, yyleng, n_linhas, error_simb, 5);return -1;}
 {numero_real_mal_formado_2} {currentEntry = initEntry(yytext, yyleng, n_linhas, error_simb, 5);return -1;}
-{numero_real_mal_formado_3} {currentEntry = initEntry(yytext, yyleng, n_linhas, error_simb, 5);return -1;}
 {identificador_mal_formado} {currentEntry = initEntry(yytext, yyleng, n_linhas, error_simb, 6);return -1;}
 
 <<EOF>> {currentEntry = initEntry(yytext, yyleng, n_linhas, eof_simb, -1);return 1;}
@@ -137,9 +135,9 @@ int main(){
         RTAddString(&rt, strsize(reserved[i]));
         i++;
     }
-	
+
 	Entry** fileEntries;
-	
+
 	i = 0;
 	do{
 		yylex();

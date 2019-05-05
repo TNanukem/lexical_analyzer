@@ -57,8 +57,8 @@ const char* symbolToStr(Symbol sym){
 }
 
 int isValidSymbol(Symbol sym){
-	/* Para fins da funcao handleEntry, simbolos validos nao sao erros, 
-	 * nao sao palavras reservadas, sao simbolos ou numeros e nao sao o 
+	/* Para fins da funcao handleEntry, simbolos validos nao sao erros,
+	 * nao sao palavras reservadas, sao simbolos ou numeros e nao sao o
 	 * fim do arquivo.
 	 */
 	return (sym != error_simb) && (sym != reserved_simb) && (sym != no_simb) && (sym != eof_simb);
@@ -114,7 +114,6 @@ void handleEntry(Entry local_entry){
 		printf("%s - %s\n", local_entry.str, local_entry.str);
 	}else if(local_entry.sym == error_simb){
 		// Impressao de erro, "ERRO: mensagem, linha: numero da linha"
-		printf("ERRO: %s, linha: %d\n", error_messages[local_entry.code], local_entry.line);
+		printf("ERRO: %s, linha: %d, token: %s\n", error_messages[local_entry.code], local_entry.line, local_entry.str);
 	}
 }
-
