@@ -47,8 +47,8 @@ espaco " "
 quebra_linha "\r"?"\n"
 tab "\t"
 
-comentario_mal_formado "{"[^}\n]*"\n"
-comentario "{"[^}\n]*"}"
+comentario_mal_formado "{"[^"}"("\r"?"\n")]*"\r"?"\n"
+comentario "{"[^"}"("\r"?"\n")]*"}"
 
 ident ({letra}|"_")+({letra}|{digito})*
 identificador_mal_formado {digito}+({letra}|"-"|"_")+
