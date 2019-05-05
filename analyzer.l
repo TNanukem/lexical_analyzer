@@ -120,7 +120,7 @@ numero_real_mal_formado_3 ("+"|"-")?{digito}+"."{digito}+"."
 				}
 
 . {currentEntry = initEntry(yytext, yyleng, n_linhas, error_simb, 3);return -1;}
-{comentario_mal_formado} {currentEntry = initEntry(yytext, yyleng, n_linhas, error_simb, 4);return -1;}
+{comentario_mal_formado} {currentEntry = initEntry(yytext, yyleng, n_linhas, error_simb, 4);n_linhas++;return -1;}
 {numero_real_mal_formado_1} {currentEntry = initEntry(yytext, yyleng, n_linhas, error_simb, 5);return -1;}
 {numero_real_mal_formado_2} {currentEntry = initEntry(yytext, yyleng, n_linhas, error_simb, 5);return -1;}
 {numero_real_mal_formado_3} {currentEntry = initEntry(yytext, yyleng, n_linhas, error_simb, 5);return -1;}
