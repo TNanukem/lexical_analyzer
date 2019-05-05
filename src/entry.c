@@ -113,7 +113,7 @@ void handleEntry(Entry local_entry){
 		// Impressao de palavra reservada, "texto - palavra"
 		printf("%s - %s\n", local_entry.str, local_entry.str);
 	}else if(local_entry.sym == error_simb){
-		// Impressao de erro, "ERRO: mensagem, linha: numero da linha"
-		printf("ERRO: %s, linha: %d, token: %s\n", error_messages[local_entry.code], local_entry.line, local_entry.str);
+		// Impressao de erro, "ERRO: mensagem, linha: numero da linha, entrada: string de entrada"
+		printf("ERRO: %s, linha: %d, entrada: %s\n", error_messages[local_entry.code], local_entry.line, local_entry.str);
 	}
 }
