@@ -32,17 +32,3 @@ cc lex.yy.c src/radix_tree.c src/entry.c -ll -o out
 ~~~~
 
 Then, you can either assign a file to the output or insert it manually on the command line.
-
-## To-do
-
-* ~Treat the {} construction as commentary~
-* ~Search on the reserved identificators list~
-* ~Calling structure of the specification~
-* ~Error handling~
-  * ~Comment not closed~
-  * ~Symbol not on the language~
-  * ~Number not properly formed~
-  * ~Size of the identificator~
-  * ~Bad formatted identificator~
-* ~Test generation and execution~
-* ~Report~
