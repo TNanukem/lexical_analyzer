@@ -27,7 +27,7 @@ However, if you want to manually compile the files, you should use the following
 
 ~~~~
 lex analyzer.l
-cc lex.yy.c src/radix_tree.c -ll -o out
+cc lex.yy.c src/radix_tree.c src/entry.c -ll -o out
 ./out
 ~~~~
 
@@ -37,7 +37,7 @@ Then, you can either assign a file to the output or insert it manually on the co
 
 * ~Treat the {} construction as commentary~
 * ~Search on the reserved identificators list~
-* Calling structure of the specification
+* ~Calling structure of the specification~
 * ~Error handling~
   * ~Comment not closed~
   * ~Symbol not on the language~
